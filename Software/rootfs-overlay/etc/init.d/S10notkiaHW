@@ -1,0 +1,28 @@
+#!/bin/sh
+
+start() {
+	printf "Starting Notkia HW config: "
+	/sbin/notkia-hw.sh \
+		&& echo "OK" || echo "FAIL"
+}
+
+stop() {
+	:
+}
+
+case "$1" in
+	start)
+		start
+		;;
+	stop)
+		stop
+		;;
+	restart|reload)
+		stop
+		sleep 1
+		start
+		;;
+	*)
+		echo "Usage: $0 {start|stop|restart}"
+		exit 1
+esac

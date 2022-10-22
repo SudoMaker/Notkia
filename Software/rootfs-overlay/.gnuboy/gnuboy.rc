@@ -1,0 +1,10 @@
+set samplerate 48000
+set framelen 0
+
+bind f4 quit
+bind enter +a
+bind f3 +b
+bind tab +select
+bind backspace +start
+bind ctrl savestate
+bind shift loadstate

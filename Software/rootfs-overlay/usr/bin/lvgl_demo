@@ -1,0 +1,19 @@
+#!/bin/sh
+
+trap ctrl_c INT
+
+function ctrl_c() {
+        killall lvgl_demo.real
+        notkia-fbtft-bind.sh
+}
+
+notkia-fbtft-unbind.sh
+
+lvgl_demo.real "$@" &
+
+head -c 64 /dev/input/event1 > /dev/null
+killall lvgl_demo.real
+notkia-fbtft-bind.sh
+
+exit 0
+
